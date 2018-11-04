@@ -1,6 +1,6 @@
 ![logo](https://hackerdig.com/img/logo-50x50.png)
 
-Hacker Dig is a tool for digging Hacker News for ideas and success opportunities.
+Hacker Dig is a custom Hacker News interface, enhanced with summaries and special functionalities that help the user to dig Hacker News for ideas and success opportunities.
 
 See it live on __https://hackerdig.com__
 
