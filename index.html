@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Hacker Dig - Digging ideas from Hacker News</title>
+  <meta name="description" content="Hacker Dig is a custom Hacker News interface, enhanced with summaries and special functionalities that help the user to create and easily note innovative ideas.">
+
+  <meta name="image" content="https://hackerdig.com/img/social.png?v=001">
+
+  <!-- Schema.org for Google -->
+  <meta itemprop="name" content="Hacker Dig - Digging ideas from Hacker News">
+  <meta itemprop="description" content="Hacker Dig is a custom Hacker News interface, enhanced with summaries and special functionalities that help the user to create and easily note innovative ideas.">
+  <meta itemprop="image" content="https://hackerdig.com/img/social.png?v=001">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hacker Dig - Digging ideas from Hacker News">
+  <meta name="twitter:description" content="Hacker Dig is a custom Hacker News interface, enhanced with summaries and special functionalities that help the user to create and easily note innovative ideas.">
+  <meta name="twitter:site" content="@hackerdig">
+  <meta name="twitter:image:src" content="https://hackerdig.com/img/social.png?v=001">
+
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta name="og:title" property="og:title" content="Hacker Dig - Digging ideas from Hacker News">
+  <meta name="og:title" property="og:description" content="Hacker Dig is a custom Hacker News interface, enhanced with summaries and special functionalities that help the user to create and easily note innovative ideas.">
+  <meta name="og:title" property="og:image" content="https://hackerdig.com/img/social_fb.png?v=001">
+  <meta name="og:title" property="og:url" content="https://hackerdig.com">
+  <meta name="og:title" property="og:site_name" content="Hacker Dig">
+  <meta name="og:title" property="og:type" content="website">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#fb651e">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="apple-mobile-web-app-title" content="Hacker Dig">
+  <meta name="application-name" content="Hacker Dig">
+  <meta name="msapplication-TileColor" content="#757575">
+  <meta name="msapplication-config" content="browserconfig.xml">
+  <meta name="theme-color" content="#efefef">
+
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <style>
+    [v-cloak] { display: none; }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="splashScreen" style="position:absolute;width:100px;height:100px;top:50%;left:50%;margin-top:-50px;margin-left:-50px;">
+    <svg viewBox="0 0 389.21 389.21">
+      <title>logo</title>
+      <polygon points="389.21 389.21 0 389.21 0 0 389.21 0 389.21 389.21 389.21 389.21" style="fill:#fb651e;fill-rule:evenodd"/>
+      <polygon points="152.76 43.52 152.76 76.73 180.36 76.73 180.36 215.2 208.85 215.2 208.85 76.73 236.45 76.73 236.45 43.52 152.76 
+      43.52 152.76 43.52" style="fill:#fefefe;fill-rule:evenodd"/>
+      <path d="M319.85,432.61V484H291.36V432.61H250V492.1a55.58,55.58,0,0,0,111.16,0V432.61H319.85Z" transform="translate(-111 -202)" 
+      style="fill:#fefefe;fill-rule:evenodd"/>
+    </svg>
+  </div>
+
+  <div id="app">
+    <div class="wrapper fit">
+
+      <!-- LEFT SIDE -->
+      <div class="box left" v-cloak>
+        <div class="logo">
+          <svg viewBox="0 0 389.21 389.21">
+            <title>logo</title>
+            <polygon points="389.21 389.21 0 389.21 0 0 389.21 0 389.21 389.21 389.21 389.21" style="fill:#fb651e;fill-rule:evenodd"/>
+            <polygon points="152.76 43.52 152.76 76.73 180.36 76.73 180.36 215.2 208.85 215.2 208.85 76.73 236.45 76.73 236.45 43.52 152.76 
+            43.52 152.76 43.52" style="fill:#fefefe;fill-rule:evenodd"/>
+            <path d="M319.85,432.61V484H291.36V432.61H250V492.1a55.58,55.58,0,0,0,111.16,0V432.61H319.85Z" transform="translate(-111 -202)" 
+            style="fill:#fefefe;fill-rule:evenodd"/>
+          </svg>
+        </div>
+
+        <div style="float:left;">
+          <h2>Top stories</h2>
+        </div>
+
+        <div v-if="pwaChrome" @click="installPWA" style="float:right;width:19px;cursor:pointer;margin-top:4px;" class="active">
+          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.37 32.44">
+          <title>Install</title>
+          <path d="M321.47,401.92a0.88,0.88,0,0,0-.89.89v7.85H290.79V402.8a0.89,0.89,0,0,0-1.79,0v8.74a0.89,0.89,0,0,0,.89.9h31.58a0.9,0.9,0,0,0,.9-0.9V402.8A0.89,0.89,0,0,0,321.47,401.92Z" transform="translate(-289 -380)" style="fill:#1e201d"/><path d="M305.05,404.94a0.91,0.91,0,0,0,1.27,0l8-8a0.89,0.89,0,0,0,0-1.27,0.87,0.87,0,0,0-1.26,0l-6.44,6.43V380.9a0.89,0.89,0,0,0-.89-0.9,0.9,0.9,0,0,0-.9.9v21.23l-6.43-6.43a0.9,0.9,0,0,0-1.27,1.27Z" transform="translate(-289 -380)" style="fill:#1e201d"/>
+          </svg>
+        </div>
+
+        <div style="clear:both;height:10px;"></div>
+
+        <div v-if="items.length == 0">Loading...</div>
+
+        <div class="item-list" v-for="item in items" :key="item.id" v-cloak>
+          <span @click.prevent="dig(item.id)" v-bind:id="item.id" class="link active" title="Dig this story">
+            {{ item.title }}
+          </span>
+
+          <div style="height:26px;margin-top:4px;">
+            <a :href="'https://news.ycombinator.com/item?id='+item.id" target="_blank" title="HN link" class="active">{{ item.score }}</a> | 
+            <span v-if="item.url.length > 0">
+              <a :href="item.url" target="_blank" title="Original source" class="active">
+                <svg class="svg-link" width="14" height="12">
+                  <use xlink:href="#svg-link"></use>
+                </svg>
+              </a> | 
+            </span>
+            <span v-if="summaries[item.id]">
+              <span  @click="showHideSummary(item.id)" class="link active" title="Summary">
+                <svg class="svg-summary" width="20" height="11">
+                  <use xlink:href="#svg-summary"></use>
+                </svg>
+              </span> | 
+            </span>
+            <span v-if="item.kids > 0" @click="showHideComments(item.id)" class="link active" title="Show/hide comments">
+              {{ item.kids }} comments
+            </span>
+            <span v-else>
+              {{ item.kids }} comments
+            </span>
+          </div>
+
+
+          <div v-if="(showComments.indexOf(item.id) >= 0) || (showSummaries.indexOf(item.id) >= 0)" style="margin-bottom:40px;">
+
+            <div v-if="showSummaries.indexOf(item.id) >= 0" class="summary">
+              <div style="margin-bottom: 7px;"><b>Summary</b></div>
+              <span @click.prevent="dig(item.id)" class="link active" v-html="summaries[item.id].summary" title="Dig this story"></span>
+            </div>
+
+            <div v-if="showComments.indexOf(item.id) >= 0" class="comments">
+
+              <div v-if="!comments[0]" style="margin-top:10px;padding-left: 10px;">
+                Loading...
+              </div>
+
+              <div class="comment" v-for="comment in commentsLoad(item.id)" :key="comment.id">
+                <div v-if="comment.parent == item.id">
+                  <span @click.prevent="dig(comment.id)" class="link active" v-html="comment.text" title="Dig this comment"></span>
+                  <div style="height:2px;"></div>
+                  <span @click="showHideCommentsX(item.id)" class="comments-close active" title="Hide comments">
+                    <svg width="11" height="9">
+                      <use xlink:href="#svg-clear"></use>
+                    </svg>
+                  </span> | 
+                  <a :href="'https://news.ycombinator.com/item?id='+comment.id" target="_blank" title="HN link" class="active">
+                    {{ comment.kids }} comments
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="box right" v-cloak>
+        <span v-show="view == 'ideas'"><h2>Ideas</h2></span>
+        <span v-show="view == 'info'"><h2>Info</h2></span>
+        <span v-show="view == 'mail'"><h2>Save</h2></span>
+
+        <div class="right-menu">
+          <div v-if="digs.length > 0 && view == 'ideas'" style="display:inline;">
+            <div class="menu-clear active" @click="clearDigs" title="Delete ideas">
+              <svg class="svg-clear" width="20" height="20">
+                <use xlink:href="#svg-clear"></use>
+              </svg>
+            </div>
+            <div class="menu-save active" @click="view = 'mail'" title="Save ideas">
+              <svg class="svg-save" width="20" height="20">
+                <use xlink:href="#svg-save"></use>
+              </svg>
+            </div>
+          </div>
+
+          <div v-if="view != 'info' && view != 'mail'" class="menu-info active" @click="view = 'info'" title="Info">
+            <svg class="svg-info" width="20" height="20">
+              <use xlink:href="#svg-info"></use>
+            </svg>
+          </div>
+
+          <div class="menu-back active" v-if="view != 'ideas'" @click="view = 'ideas'" title="Back">
+            <svg class="svg-back" width="20" height="20">
+              <use xlink:href="#svg-back"></use>
+            </svg>
+          </div>
+        </div>
+        
+        <div v-show="view == 'info'" class="info-view">
+          Hacker Dig is a tool for digging Hacker News for ideas and success opportunities.
+          <br><br><br>
+          <b>How does it work?</b>
+          <br><br>
+          First of all, this tool puts the user into the mindset required for idea digging. 
+          If browsing Hacker News directly, the mind quickly shifts to a 'curiosity' or an 'entertainment' mode, and forgets 
+          (or doesn't have this purpose in the first place) to interpret everything creatively and look for 
+          potentially great ideas and opportunities.
+          <br><br>
+          This mindset change on Hacker Dig is done by setting the correct expectations at the beginning (here we dig for 
+          ideas) and then creating a particularly limited interface which displays only as much information as necessary for 
+          digging, and allows to scan through titles, summaries and comments quickly, and in a plain text mode, 
+          without any visual or stylistic distractions.
+          <br><br>
+          Inspired by the different topics and concepts from Hacker News, the user can then transform this inspiration into 
+          innovative ideas and with a one-click note them in the "Ideas" view of the app. Each new note has a reference to the 
+          original HN story or comment.
+          <br><br>
+          All ideas are saved as cookies. To archive ideas, you can send them to your email address and then clear the 
+          "Ideas" view and start over.
+          <br><br>
+          Updates from Hacker News API come every 10 minutes. For summaries extraction, the app uses Aylien API.
+          <br><br>
+          Hacker Dig is a PWA app. Based on the CSS grid layout, it can be comfortably used on both narrow and wide screens. You can 
+          <span v-if="pwaChrome" class="underline" style="cursor:pointer;" @click="installPWA">install</span>
+          <span v-else>install</span>
+           the app on your mobile or desktop device and use it as a native app.
+          <br><br> 
+          Source code: <a href="https://github.com/giekaton/hacker-dig" target="_blank" class="underline">GitHub</a>
+          <br><br><br>
+        </div>
+
+        <div v-show="view == 'mail'" class="info-view">
+          Your ideas are saved automatically as cookies.
+          <br>
+          <br>
+          You can send all ideas to a specified e-mail address:
+          <br>
+          <br>
+          <form @submit.prevent="sendEmail">
+            <input type="email" autocomplete="on" placeholder="E-mail address" v-model="email" style="width:200px;padding:2px;">
+            <br>
+            <br>
+            <div class="g-recaptcha" data-sitekey="6LeLGXQUAAAAAM1dCHUt9DefL0lanJtFssEAHdH4"></div>
+            <br>
+            <button type="submit">Send ideas</button>&nbsp;&nbsp;{{ emailFeedback }}
+          </form>
+          <br>
+          <br>
+          To clear all ideas and cookies, click&nbsp;
+          <div class="menu-clear active" @click="clearDigs" title="Delete all ideas and clear cookies">
+            <svg class="svg-clear" width="12" height="12" style="top:0.5px;">
+              <use xlink:href="#svg-clear"></use>
+            </svg>
+          </div>
+        </div>
+
+        <div v-if="digs.length == 0 && view == 'ideas'" class="info-view">
+          Hacker Dig is	a tool for digging Hacker News for ideas and success opportunities.
+          <br><br>
+          In the "Top stories" view, click on the title of a story, on its summary or a comment to dig your first idea.
+          <br><br>
+          <span class="link underline" @click="view = 'info'">More details...</span>
+        </div>
+
+        <div v-show="view == 'ideas'" class="dig" v-for="dig in digs" :key="dig.id">
+
+          <div class="dig-id">
+            <a :href="'https://news.ycombinator.com/item?id='+dig.item" target="_blank" class="dig-hn-link" title="HN link">
+              <svg width="10" height="8" class="active">
+                <use xlink:href="#svg-link"></use>
+              </svg>
+            </a>
+            |
+            <span @click="removeDig(dig.id)" class="dig-close" title="Delete">
+              <svg width="10" height="8" class="active">
+                <use xlink:href="#svg-clear"></use>
+              </svg>
+            </span>
+          </div>
+
+          <textarea-autosize v-model.lazy="dig.text"  @blur.native="digTextUpdate(dig.id)"></textarea-autosize>
+        </div>
+
+      </div>
+      
+    </div>
+
+  </div>
+
+  <link rel="stylesheet" href="css/main.css?v=035">
+
+  <!-- SVG icons -->
+  <svg style="display: none">
+    <defs>
+      <symbol id="svg-summary" viewBox="0 0 70.93 44.74">
+        <path d="M227.32,386.43a66.29,66.29,0,0,1,8.18,8.92,1.7,1.7,0,0,1,.25.48,1.73,1.73,0,0,1,0,1.07,1.7,1.7,0,0,1-.25.49,60.56,60.56,0,0,1-4.93,5.74,69.5,69.5,0,0,1-5.67,5.28,50.28,50.28,0,0,1-12.35,7.71,31.36,31.36,0,0,1-12.19,2.62,29.84,29.84,0,0,1-8.83-1.39,40.57,40.57,0,0,1-9-4.12,59,59,0,0,1-9.13-6.92,66.16,66.16,0,0,1-8.18-8.92,1.71,1.71,0,0,1-.25-0.48h0a1.76,1.76,0,0,1,0-1.07h0a1.71,1.71,0,0,1,.24-0.48l0.27-.38h0a68.3,68.3,0,0,1,7.91-8.55,59,59,0,0,1,9.13-6.92,40.56,40.56,0,0,1,9-4.12,28.83,28.83,0,0,1,17.67,0,40.57,40.57,0,0,1,9,4.12,59,59,0,0,1,9.13,6.92h0Zm-32.16-2.66a13.7,13.7,0,1,1-4.43,3,13.57,13.57,0,0,1,4.43-3h0Zm1.32,22a10.16,10.16,0,0,0,11.08-2.21h0a10.17,10.17,0,1,0-14.38-14.38h0a10.15,10.15,0,0,0,0,14.38h0a10.22,10.22,0,0,0,3.31,2.21h0Zm-3.77,8.3a25.17,25.17,0,0,0,15.34,0,36.66,36.66,0,0,0,8-3.6,54.32,54.32,0,0,0,8-5.9,69.18,69.18,0,0,0,7.56-7.8l0.34-.41-0.34-.41a69.49,69.49,0,0,0-7.57-7.8h0a54.52,54.52,0,0,0-8-5.91,36.7,36.7,0,0,0-7.95-3.6,25.17,25.17,0,0,0-15.34,0,36.67,36.67,0,0,0-8,3.6,54.33,54.33,0,0,0-8,5.9,69.18,69.18,0,0,0-7.56,7.8l-0.34.41,0.34,0.41a69.54,69.54,0,0,0,7.57,7.8,54.51,54.51,0,0,0,8,5.91,36.68,36.68,0,0,0,7.95,3.6h0Z"
+        transform="translate(-164.91 -374)" style="fill-rule:evenodd"/>
+      </symbol>
+
+      <symbol id="svg-link" viewBox="0 0 45.5 45.6">
+        <path d="M105.55,376.71l-3.16,3.16,2.49,2.49,0.12-.12h0l3-3h0l0.07-.07a8.07,8.07,0,0,1,2.62-1.75h0a8.1,8.1,0,0,1,6.2,0h0a8.07,8.07,0,0,1,2.58,1.72h0l0,0,0.07,0.07h0l0.07,0.07a8.07,8.07,0,0,1,1.75,2.62h0a8.08,8.08,0,0,1-1.75,8.82L107.49,402.9h0l-0.71.71-0.18.18-0.18-.18-0.71-.71h0l-7-7-2.49,2.49,10.28,10.28h0l0,0h0.11l0,0h0l15.42-15.42a11.81,11.81,0,0,0,1.46-1.77,11.37,11.37,0,0,0,1.72-4.16,11.94,11.94,0,0,0,0-4.56,11.37,11.37,0,0,0-1.72-4.16,11.81,11.81,0,0,0-1.46-1.77l-0.14-.14a11.81,11.81,0,0,0-1.77-1.46,11.37,11.37,0,0,0-4.16-1.72,11.9,11.9,0,0,0-4.56,0,11.4,11.4,0,0,0-2,.58l-0.18.07a11.46,11.46,0,0,0-2,1.07,11.76,11.76,0,0,0-1.76,1.45h0ZM100.5,410l-3,3h0l-0.07.07a8.07,8.07,0,0,1-2.62,1.75h0a8.09,8.09,0,0,1-8.78-1.72h0l0,0L86,413h0l-0.07-.07h0a8.09,8.09,0,0,1,0-11.44h0L98,389.32h0l0.71-.71,0.18-.18,0.18,0.18,0.71,0.71h0l7,7,2.49-2.49L99,383.54h0l0,0H98.82L83.4,399a11.79,11.79,0,0,0-1.46,1.77,11.36,11.36,0,0,0-1.72,4.16,11.83,11.83,0,0,0-.22,2.28v0.25h0a11.75,11.75,0,0,0,.22,2,11.39,11.39,0,0,0,1.72,4.16,11.81,11.81,0,0,0,1.46,1.77l0.14,0.14A11.81,11.81,0,0,0,85.3,417a11.37,11.37,0,0,0,4.16,1.72,11.94,11.94,0,0,0,4.56,0A11.37,11.37,0,0,0,98.19,417a11.8,11.8,0,0,0,1.77-1.46l3.16-3.16-2.49-2.49-0.12.12h0Z" 
+        transform="translate(-80 -373.31)"/>
+      </symbol>
+
+      <symbol id="svg-clear" viewBox="0 0 34.96 34.96">
+        <path d="M276.71,413.59a1.17,1.17,0,0,1-1.65-1.65l15.49-15.49L275.06,381a1.17,1.17,0,0,1,1.65-1.65l15.49,15.49,15.49-15.49a1.17,1.17,0,0,1,1.65,1.65l-15.49,15.49,15.49,15.49a1.17,1.17,0,0,1-1.65,1.65L292.2,398.1l-15.49,15.49h0Z" 
+        transform="translate(-274.71 -378.97)"/>
+      </symbol>
+
+      <symbol id="svg-save" viewBox="0 0 38.4 39.2">
+        <path d="M365,376.85H333.48V416h38.4V383.72L365,376.85h0Zm5.27,37.6h-4.8v-16.8h-26.4v16.8h-4v-36h5.6v12.8h22.4v-12.8h1.27l5.93,5.93v30.07h0Zm-14.59-24.8v-11.2H342.28v11.2h13.41Zm-15,24.8v-15.2h23.2v15.2h-23.2Zm16.61-36v11.2h4.19v-11.2h-4.19Z" 
+        transform="translate(-333.48 -376.85)" 
+        style="fill-rule:evenodd"/>
+      </symbol>
+
+      <symbol id="svg-info" viewBox="0 0 42.17 42.17">
+        <path d="M436.1,374.6a21.16,21.16,0,1,0,6.85,4.58,21,21,0,0,0-6.85-4.58h0Zm-6.68,9.62a2,2,0,0,0-2.77,0h0a2,2,0,1,0,2.77,0h0Zm-2.11,7.53a1,1,0,0,0-.3.72v11.48a1,1,0,1,0,2,0V392.47a1,1,0,0,0-1.75-.72h0Zm8-15.25a19.09,19.09,0,1,1-7.28-1.44,19.07,19.07,0,0,1,7.28,1.44h0Z" 
+        transform="translate(-406.95 -373)"/>
+      </symbol>
+
+      <symbol id="svg-back" viewBox="0 0 35.02 35.02">
+        <path d="M500.79,379.29a1.2,1.2,0,0,1,1.7,1.7l-14.26,14.26h29.73a1.2,1.2,0,1,1,0,2.4H488.22l14.26,14.26a1.2,1.2,0,1,1-1.7,1.7L484.47,397.3l0,0h0l0,0h0l-0.12-.16v0l0,0h0v0h0l0-.08h0a1.2,1.2,0,0,1,0-.85h0l0-.08h0v0h0l0,0v0l0.12-.16h0l0,0h0l0,0,16.31-16.31h0Z" 
+        transform="translate(-484.12 -378.94)"/>
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <!-- <script src="https://unpkg.com/vue@2.5.17/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue-cookies@1.5.7/vue-cookies.js"></script> -->
+
+  <script src="js/vue.min.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/vue-cookies.js"></script>
+
+  <script src="js/vue-textarea-autosize.browser.js"></script>
+  
+
+  <script>
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        items: [],
+        comments: [],
+        summaries: [],
+        digs: [],
+        email: '',
+        emailFeedback: '',
+        showComments: [],
+        showSummaries: [],
+        view: 'ideas',
+        digId: 0,
+        ajaxConfig: { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
+        pwaChrome: false,
+      },
+      methods: {
+        dig (item) {
+          this.digId += 1;
+          this.$cookies.set('digId', this.digId, Infinity);
+          vue.$data.digs.unshift({item: item, id: this.digId, text: ''});
+          this.$cookies.set('dig_'+this.digId+'_item', item, Infinity);
+          vue.$data.view = 'ideas';
+        },
+        digTextUpdate (id) {
+          function getIndex () {
+            for(var i = 0; i < vue.$data.digs.length; i += 1) {
+              if(vue.$data.digs[i].id == id) { return i; }
+            }
+          }
+          let index = getIndex();
+          this.$cookies.set('dig_'+id+'_text', this.digs[index].text, Infinity);
+        },
+        removeDig (id) {
+          function getIndex () {
+            for(var i = 0; i < vue.$data.digs.length; i += 1) {
+              if(vue.$data.digs[i].id == id) { return i; }
+            }
+          }
+          let index = getIndex();
+          vue.$data.digs.splice(index, 1);
+          this.$cookies.remove('dig_'+id);
+          this.$cookies.remove('dig_'+id+'_item');
+        },
+        clearDigs () {
+          this.digId = 0;
+          this.digs = [];
+          ca = this.$cookies.keys();
+          ca.forEach ( c => {
+            this.$cookies.remove(c);
+          });
+        },
+        showHideSummary (itemId) {
+          if (vue.$data.showSummaries.indexOf(itemId) == -1) {
+            vue.$data.showSummaries.push(itemId);
+          }
+          else {
+            vue.$data.showSummaries.splice(vue.$data.showSummaries.indexOf(itemId), 1);
+          }
+        },
+        showHideComments (itemId) {
+          if (vue.$data.showComments.indexOf(itemId) == -1) {
+            vue.$data.showComments.push(itemId);
+          }
+          else {
+            vue.$data.showComments.splice(vue.$data.showComments.indexOf(itemId), 1);
+            let story = document.getElementById(itemId);
+          }
+        },
+        showHideCommentsX (itemId) {
+          if (vue.$data.showComments.indexOf(itemId) == -1) {
+            vue.$data.showComments.push(itemId);
+          }
+          else {
+            vue.$data.showComments.splice(vue.$data.showComments.indexOf(itemId), 1);
+            let story = document.getElementById(itemId);
+            story.scrollIntoView();
+          }
+        },
+        commentsLoad (itemId) {
+          let selectedComments = [];
+          this.comments.forEach(comment => {
+            if (comment.text.length > 400 && comment.text.slice(-3) != '...') {
+              comment.text += '...';
+            }
+            if (comment.parent == itemId) {
+              selectedComments.push(comment);
+            }
+          });
+          selectedComments.sort(function(a, b){
+            return b.kids - a.kids;
+          });
+          return selectedComments;
+        },
+        sendEmail () {
+          vue.$data.emailFeedback = 'Please wait...';
+          
+          let gRecaptchaResponse = grecaptcha.getResponse();
+
+          if (gRecaptchaResponse.length < 10) {
+            vue.$data.emailFeedback = 'reCAPTCHA error';
+            return;
+          }
+
+          axios.post('backend/ajax.php', {
+            request: 'sendEmail',
+            email: this.email,
+            gRecaptchaResponse: gRecaptchaResponse,
+            content: this.digs
+          }, this.ajaxConfig)
+          .then(function (response) {
+            if (response['data'] == 'captcha-error') {
+              vue.$data.emailFeedback = 'reCAPTCHA error';
+            }
+            else if (response['data'] == 'email-error') {
+              vue.$data.emailFeedback = 'Error';
+            }
+            else if (response['data'] == 'email-sent') {
+              vue.$data.emailFeedback = 'Email sent';
+            }
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+        },
+        installPWA: function () {
+          window.deferredPrompt.prompt();
+        },
+      },
+      mounted: function () {
+        document.getElementById('splashScreen').style.display = 'none';
+
+        this.$cookies.keys().forEach( c => {
+            if (c.substring(c.length -5) == '_item') {
+              let digId = c.split('_')[1];
+              this.digs.unshift({item: this.$cookies.get('dig_'+digId+'_item'), id: digId, text: this.$cookies.get('dig_'+digId+'_text')});
+              return;
+            }
+          }
+        );
+        if (this.$cookies.isKey('digId')) {
+          this.digId = parseInt(this.$cookies.get('digId'));
+        }
+
+        this.results = [];
+
+        axios.post('backend/ajax.php', {
+          request: 'getItems'
+        }, this.ajaxConfig)
+        .then(function (response) {
+          response.data.sort(function(a, b){
+            return a.place - b.place;
+          });
+          response.data.forEach(item => {
+            vue.$data.items.push(item);
+          });
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+
+        axios.post('backend/ajax.php', {
+          request: 'getComments'
+        }, this.ajaxConfig)
+        .then(function (response) {
+          vue.$data.comments = response.data;
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+
+        axios.post('backend/ajax.php', {
+          request: 'getSummaries'
+        }, this.ajaxConfig)
+        .then(function (response) {
+          vue.$data.summaries = response.data;
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+      },
+      beforeMount: function () {
+
+        // PWA install prompt event
+        window.deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+          window.deferredPrompt = e;
+          if(/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)) {
+            e.preventDefault();
+            this.pwaChrome = true;
+          }
+        });
+        // if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        
+        // hide gray highlight on tap
+        document.addEventListener("touchstart", function(){}, true);
+
+      },
+    })
+
+    window.vue = app;
+
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+        console.log('Service Worker Registered');
+    }).catch(function(err) {
+        console.log('Service Worker registration failed: ', err);
+      });
+    }
+  </script>
+
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+
+</body>
+
+</html>

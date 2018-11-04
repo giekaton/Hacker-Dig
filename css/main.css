@@ -1,0 +1,298 @@
+html, body {
+  font-family: 'Times New Roman', Times, serif;
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+  background-color: #f0f0e9;
+  padding: 0;
+  margin: 0;
+  height:100%;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#app {
+  height: 100%;
+}
+
+h2 {
+  margin-top: 0px;
+  font-weight: bold;
+}
+
+.logo {
+  float:left;
+  height:22px;
+  width:22px;
+  margin-right:12px;
+  margin-top:5px;
+}
+
+a, a:link, a:visited, a:active, a:hover {
+  color: #222;
+  text-decoration: none;
+}
+
+.link {
+  cursor: pointer; 
+}
+
+.active:active {
+  border-bottom: 1px solid grey;
+}
+
+.underline {
+  border-bottom: 1px solid grey;
+}
+
+.item-list {
+  margin-bottom: 25px;
+}
+
+.summary {
+  font-size: 14px;
+  margin-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.summary p {
+  -webkit-margin-before: 5px;
+  -webkit-margin-after: 5px;
+}
+
+.comments {
+  margin-bottom: 20px;
+}
+
+.comment {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 20px;
+  padding-left: 10px;
+  border-left: 1px solid rgb(192, 192, 192);
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+}
+
+.comment p {
+  -webkit-margin-before: 5px;
+  -webkit-margin-after: 5px;
+}
+
+.comments-close {
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.dig {
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 2px;
+  margin-bottom: 15px;
+  position: relative;
+  padding: 5px;
+  padding-bottom: 0px;
+}
+
+.dig-id {
+  position: absolute;
+  right: 0px;
+  top: 1px;
+  font-size: 10px;
+  color: grey;
+}
+
+.dig-hn-link {
+  padding: 2px;
+}
+
+.dig-close {
+  cursor: pointer;
+  display: relative;
+  padding: 3px;
+}
+
+textarea {
+  width: 100%;
+  border: 0px;
+  box-sizing: border-box;
+  outline: none;
+  resize: vertical;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  overflow: hidden;
+  resize: none;
+}
+
+texarea ::-webkit-scrollbar-thumb {
+  width: 15px;
+}
+
+.info-view {
+  font-size: 15px;
+}
+
+.svg-link-small {
+  position: relative;
+  width: 10px;
+}
+
+.right-menu {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  display: inline;
+}
+
+.menu-clear {
+  display: inline;
+  cursor: pointer;
+}
+
+.menu-save {
+  display: inline;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.menu-info {
+  display: inline;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.menu-back {
+  cursor: pointer;
+}
+
+.svg-clear {
+  position: relative;
+  width: 15px;
+}
+
+.svg-clear-small {
+  position: relative;
+  width: 10px;
+}
+
+.svg-save {
+  position: relative;
+  width: 16px;
+}
+
+.svg-info {
+  position: relative;
+  width: 18px;
+}
+
+.svg-back {
+  width: 15px;
+}
+
+
+/* Layout */
+
+.wrapper {
+  display: grid;
+  height: 100%;
+  padding: 10px;
+}
+
+.fit {
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.box {
+  position: relative;
+  width: 470px;
+  height: auto;
+  overflow: auto;
+  border: 1px solid grey;
+  border-radius: 3px;
+  padding: 20px;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.left {
+  justify-self: end;
+  margin-right: 10px;
+}
+
+.right {
+  margin-left: 10px;
+}
+
+
+/* Mobile */
+
+@media only screen and (max-width: 1000px) {
+  body {
+    background-color: #dddddd;
+  }
+  .dig {
+    margin-bottom: 10px;
+  }
+  .fit {
+    grid-template-columns: none;
+    grid-template-rows: repeat(auto-fit, minmax(50%, 1fr));
+  }
+  .box {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    padding: 10px;
+    line-height: 18px;
+  }
+  .left {
+    margin-right: 0px;
+  }
+  .right {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 18px;
+  }
+  .logo {
+    margin-top: 6px;
+  }
+  .right-menu {
+    top: 19px;
+    right: 10px;
+  }
+}
+
+
+/* Custom scrollbars */
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(200, 200, 200); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(180, 180, 180); 
+}
